@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohyb</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div id="pohyb"></div>
+    <script>
+        let divik = document.getElementById('pohyb');
+        let divikStyle = getComputedStyle(divik);
+        let x = divikStyle.getPropertyValue("left").slice(0, -2);
+
+        let parentStyle = getComputedStyle(divik.parentElement);
+        let parentWidth = parentStyle.getPropertyValue("width").slice(0, -2);
+
+
+        console.log(x);
+        x = parseInt(x, 10);
+
+        function posunVlevo() {
+            x += 5;
+            if (x > parentWidth) {
+                x = 50;
+            } 
+            divik.style.left = x + "px";
+            console.log(x);               
+        }
+
+        setInterval(posunVlevo, 30);
+    </script>
+</body>
+</html>
